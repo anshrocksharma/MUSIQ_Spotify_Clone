@@ -1,0 +1,202 @@
+web application/stitch/projects/18336295097215909495/screens/a560617b57f14cfa9221b26a367a09a6
+# MUSIQ — Product Requirements Document (PRD) & Development Brief
+
+**Project Name:** MUSIQ (A Modern Hi-Res Music Streaming Platform)  
+**Target Platform:** Mobile Web / Progressive Web App (Viewport: 390px, Responsive up to Desktop 1440px)  
+**Tech Stack:** React 18, Vite, Tailwind CSS, Lucide React / Heroicons, Web Audio API / Howler.js  
+**Project Scope:** 1-Week Academic / College Full-Stack Capstone (4-Developer Team)  
+**Document Version:** 1.0.0  
+
+---
+
+## 1. Executive Summary & Vision
+
+**MUSIQ** is an original, dark-first, high-fidelity music streaming client engineered for audiophiles, late-night coders, and everyday listeners. It blends Spotify-caliber usability with an edgy, cyber-acoustic aesthetic—distinguished by deep charcoal obsidian surfaces (`#101417`), radioactive neon emerald accents (`#00F59B`), lossless audio badging, and seamless touch-driven navigation.
+
+The core objective is to deliver an end-to-end frontend and full-stack application within a realistic 1-week timeline while maintaining production-grade UI fidelity, strict component reusability, and accessible interactive states.
+
+---
+
+## 2. Problem Statement & User Personas
+
+### 2.1 The Problem
+- Modern music applications often feel bloated with non-music media (podcasts, canvas loops, heavy social feeds), muddying audio discovery.
+- College full-stack teams frequently struggle with bridging design fidelity into React components, leading to unstyled states, broken media players, and inconsistent routing.
+
+### 2.2 Target Personas
+1. **The Flow-State Coder (Ansh, 21):** Wants instantaneous music playback, ambient and lo-fi mixes, zero ads, and a distraction-free dark interface.
+2. **The Hi-Res Purist (Elena, 24):** Cares deeply about audio metadata (Lossless, 24-bit/192kHz, FLAC badges), track credits, and gapless playlist queues.
+3. **The Casual Mobile Listener (Jordan, 19):** Navigates primarily via mobile touchscreens; values quick-pick grids, clear empty states, and an easily expandable bottom mini-player.
+
+---
+
+## 3. Product Architecture & Information Architecture (IA)
+
+```
+MUSIQ Root Navigation
+├── Onboarding & Auth
+│   ├── Login Screen (Email/Password, Remember Me, Google/Apple OAuth, Resume Session)
+│   └── Signup Screen (Full Name, Email, Password Strength Meter, Terms Checkbox)
+├── Core Shell (Mobile Tab Bar & Header)
+│   ├── Home Tab (`/home`)
+│   │   ├── Top Bar (User Avatar, Notifications, Content Pills: All/Music/Podcasts/Radio)
+│   │   ├── Quick Picks (2-Column Grid with One-Tap Play)
+│   │   ├── Jump Back In (Horizontal Album Carousels)
+│   │   ├── Made For You (Discover Weekly & Daily Mixes)
+│   │   ├── Popular Artists (Circular Avatars & Follower Counts)
+│   │   └── Moods & Vibes (Thematic Genre Tiles)
+│   ├── Search Tab (`/search`)
+│   │   ├── Search Input Bar (Voice, Auto-suggest, Clear Query)
+│   │   ├── Recent Searches (Dismissible tags)
+│   │   ├── Top Match Result Card (Live Play & Direct Lossless Tag)
+│   │   └── Browse All Categories (2-Column Colored Gradient Grid)
+│   ├── Your Library Tab (`/library`)
+│   │   ├── Filter Pills (Playlists, Artists, Albums, Downloaded)
+│   │   ├── Sort & View Mode Toggle (Recently Played, List vs. Grid)
+│   │   ├── Pinned Collections (Liked Songs, Custom Playlists)
+│   │   └── Create Collection Prompt
+│   └── Premium / Settings Tab (`/settings`)
+├── Detail & Dedicated Flows (Mobile Stack Navigation)
+│   ├── Liked Songs (`/collection/liked`)
+│   │   ├── Radiant Heart Header & Metadata
+│   │   ├── Action Cluster (Play All, Shuffle, Offline Download, Share)
+│   │   └── Indexed Tracklist Table with Live Playing Equalizer
+│   ├── Playlist Details (`/playlist/:id`)
+│   │   ├── 1:1 Cover Hero & Editorial Description
+│   │   ├── Curated Creator Info & Runtime
+│   │   └── Song Row Items with Context Menus
+│   └── Album & Artist Views (`/album/:id`, `/artist/:id`)
+├── Global Persistent Playback Overlay
+│   ├── Docked Mini-Player (Persistent above bottom nav, track thumbnail, title, play/next)
+│   └── Full-Screen Now Playing Modal (`/now-playing`)
+│       ├── Ambient Blurred Album Glow Background
+│       ├── Vinyl / Cover Art Canvas with Lossless Pill
+│       ├── Interactive Waveform / Scrub Timeline with Timestamps
+│       ├── Playback Controls (Shuffle, Previous, Play/Pause, Next, Repeat)
+│       └── Drawer for Synchronized Live Lyrics & Audio Output Selector
+└── Edge & Resilience States
+    ├── Empty State Screen (Zero Frequencies, Reusable CTA, Starter Packs)
+    ├── Loading Skeleton Screen (Keyframe Linear Shimmers across all components)
+    └── Error Boundary Screen (Friendly offline / fallback recovery)
+```
+
+---
+
+## 4. Feature Specifications & Requirements
+
+### Feature 1: Persistent Global Audio Player & Mini-Player
+- **Requirement:** Audio playback must never cut off when navigating between tabs.
+- **Docked State:** Height 56px, anchored directly above the 64px bottom navigation bar. Shows 40x40 thumbnail, track name, artist, play/pause toggle, and skip next. Includes a 2px emerald progress bar along the bottom border.
+- **Expanded State:** Tap on mini-player expands the full-screen modal with track scrubber, volume, Dolby/Lossless indicators, output route (*AirPods Pro*), and synchronized lyrics view.
+
+### Feature 2: Personalized Home Hub
+- **Requirement:** Display dynamic greeting based on system time (*"Good morning"*, *"Good afternoon"*, *"Good evening"*).
+- **Interactive Quick Picks:** 6 quick cards with 1:1 square artwork that reveal a prominent green play button on hover or touch.
+- **Carousels:** CSS `overflow-x-auto snap-x` lists for *Jump Back In*, *Made For You*, and *Popular Artists*.
+
+### Feature 3: Live Search & Category Directory
+- **Requirement:** Instant debounced (300ms) query filter across song title, artist name, and album.
+- **Category Tiles:** 2-column grid cards styled with vibrant angular gradients (e.g., Pop, Hip-Hop, Electronic, Bollywood, Lo-Fi, Chill).
+- **Recent Searches:** Stored in browser `localStorage` with individual delete tags (`x`) and a "Clear All" action.
+
+### Feature 4: Library Management & Liked Songs
+- **Requirement:** User can filter items by *Playlists*, *Artists*, *Albums*, and *Downloaded*.
+- **Liked Songs System:** Special permanent playlist card with a glowing emerald audio-wave heart. Supports batch playback and instantaneous track unliking with optimistic UI updates.
+
+### Feature 5: Authentication & Session Resumption
+- **Requirement:** Clean, frictionless Login and Signup forms.
+- **Perks & Features:**
+  - Password strength meter (*Lossless Ready* visual indicator).
+  - Social auth buttons (*Continue with Google*, *Continue with Apple*).
+  - "Resuming Session" teaser card on Login to simulate continuous cloud playback state.
+
+### Feature 6: State Resilience (Loading & Empty States)
+- **Requirement:** High-perceived performance with zero jarring content layout shifts (CLS).
+- **Skeletons:** Progressive CSS shimmer gradients moving over `#181C1F` surfaces.
+- **Empty States:** When a playlist or search is empty, the screen displays a friendly empty illustration with an actionable primary CTA (*"+ Create First Playlist"*) and 3 recommended starter collections.
+
+---
+
+## 5. Design System & Token Specifications
+
+| Token Type | Value / Token Name | Usage |
+|---|---|---|
+| **Primary Accent** | `#00F59B` (Neon Emerald) | Play buttons, active tabs, progress sliders, badges |
+| **Accent Glow** | `rgba(0, 245, 155, 0.25)` | Drop shadows on primary CTAs and active equalizer |
+| **Surface Deep** | `#101417` | App background, full canvas foundation |
+| **Surface Container Low** | `#181C1F` | Card backgrounds, search input fill, list row idle |
+| **Surface Container High**| `#262A2E` | Card hover state, skeleton shimmer high-point, modal drawers |
+| **Text Primary** | `#FFFFFF` | Headings, active song titles, modal titles |
+| **Text Secondary** | `#94A3B8` / Light Slate | Artist names, descriptions, timestamps |
+| **Text Muted** | `#64748B` | Track numbers, inactive icons, copyright lines |
+| **Border Radius** | `rounded-xl` (12px), `rounded-2xl` (16px), `rounded-full` | Pills, cards, player controls, circular artist thumbs |
+| **Typography** | `Plus Jakarta Sans`, sans-serif | Modern, geometric, legible at micro-sizes |
+
+---
+
+## 6. Engineering Architecture & React Component Hierarchy
+
+To ensure the 4-person engineering team can work in parallel without merge conflicts, components are structured into isolated modules:
+
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── MobileShell.jsx        # Persistent header, child outlet, bottom nav, docked player
+│   │   ├── TopHeader.jsx          # Profile avatar, notification bell, live sync badge
+│   │   └── BottomNav.jsx          # Tab buttons with active emerald glow indicator
+│   ├── player/
+│   │   ├── AudioContext.jsx       # Global state (currentTrack, isPlaying, progress, queue)
+│   │   ├── MiniPlayer.jsx         # Docked 56px sticky player
+│   │   └── NowPlayingModal.jsx    # Fullscreen player with scrubber & lyrics drawer
+│   ├── cards/
+│   │   ├── QuickPickCard.jsx      # Compact 2-column home card
+│   │   ├── AlbumCard.jsx          # 1:1 artwork with title, artist, hover play button
+│   │   ├── ArtistCircle.jsx       # Circular avatar with follow status
+│   │   └── GenreTile.jsx          # Colored gradient category block
+│   ├── lists/
+│   │   ├── SongRow.jsx            # Index number / playing icon, thumb, title, duration, heart
+│   │   └── TracklistTable.jsx     # Header and map of SongRow items
+│   ├── feedback/
+│   │   ├── ShimmerSkeleton.jsx    # Reusable shimmer box
+│   │   ├── EmptyState.jsx         # Radial waveform icon + CTA + starter packs
+│   │   └── ErrorBoundary.jsx      # Fallback UI with retry trigger
+│   └── auth/
+│       ├── InputField.jsx         # Clean text/password field with icons and validation
+│       └── SocialAuthGroup.jsx    # Google & Apple OAuth buttons
+├── pages/
+│   ├── HomePage.jsx
+│   ├── SearchPage.jsx
+│   ├── LibraryPage.jsx
+│   ├── LikedSongsPage.jsx
+│   ├── PlaylistDetailPage.jsx
+│   ├── LoginPage.jsx
+│   └── SignupPage.jsx
+├── data/
+│   └── mockTracks.js              # Local JSON array of audio tracks, artwork, and lyrics
+└── index.css                      # Tailwind base & custom shimmer keyframes
+```
+
+---
+
+## 7. 1-Week Academic Sprint Plan (4-Developer Team Allocation)
+
+| Sprint Day | Developer 1 (Lead / Audio) | Developer 2 (Layout & Shell) | Developer 3 (Pages: Home/Search) | Developer 4 (Auth & Library) |
+|---|---|---|---|---|
+| **Day 1** | Vite scaffold, Tailwind theme config, audio mock JSON schema | `MobileShell`, `BottomNav`, and `TopHeader` components | `HomePage` layout, greeting logic, quick picks grid | `LoginPage` & `SignupPage` UI + form validation |
+| **Day 2** | `AudioContext` setup (play, pause, skip, scrub state) | `MiniPlayer` docked component integration | Horizontal carousels (*Jump Back In*, *Made For You*) | `LibraryPage` layout, filter pills, list/grid toggle |
+| **Day 3** | `NowPlayingModal` expansion, timeline scrubber & volume slider | Routing transitions (React Router DOM v6) | `SearchPage` UI, category gradient tiles, recent search cache | `LikedSongsPage` header, tracklist table, like toggle |
+| **Day 4** | Live audio integration (HTML5 Audio / Howler.js) | Synchronized lyrics drawer in modal player | Search filter logic (client-side debounced search) | Playlist detail view (`PlaylistDetailPage`) |
+| **Day 5** | Equalizer wave animation & audio-reactive visual cues | Loading skeleton shimmer components | Empty search & zero-state edge handling | Offline collection & download toggle mock |
+| **Day 6** | Cross-browser QA, mobile touch gesture testing (touch scrub) | Tailwind responsive polish (ensuring 390px - 768px - 1440px) | Final asset cleanup & mock data enrichment | Auth state persistence via `localStorage` |
+| **Day 7** | Bug fixes, performance audit (Lighthouse), demo recording | Deployment (Vercel / Netlify / GitHub Pages) | Final README & documentation prep | Final presentation slide deck & grading dry run |
+
+---
+
+## 8. Definition of Done (DoD) & Grading Rubric Alignment
+
+1. **Visual Fidelity:** Matches the established dark obsidian and neon emerald design system without unstyled flash.
+2. **Audio Continuity:** Audio continues playing seamlessly while switching tabs across Home, Search, Library, and Playlist views.
+3. **Responsiveness:** Flawless rendering on mobile viewports (390px iPhone standard) with touch-friendly tap targets (minimum 44x44px).
+4. **State Coverage:** Skeletons display during simulated latency; empty states appear when collections are cleared.
+5. **Clean Codebase:** Zero console errors, fully modularized React components, and readable Tailwind utility classes.
