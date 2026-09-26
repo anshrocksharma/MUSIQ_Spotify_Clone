@@ -1,6 +1,12 @@
 (() => {
-  const audio = new Audio();
+  const audio = document.getElementById('audioPlayer') || document.createElement('audio');
+  if (!audio.id) {
+    audio.id = 'audioPlayer';
+  }
   audio.preload = 'metadata';
+  if (!audio.parentNode) {
+    document.body.appendChild(audio);
+  }
 
   const state = {
     currentSong: null,
@@ -14,31 +20,31 @@
         title: 'Midnight Signal',
         artist: 'Lina Vale',
         album: 'Neon Reverie',
-        src: 'assets/audio/midnight-signal.mp3',
+        src: 'assets/audio/test.mp3',
       },
       {
         title: 'Afterglow',
         artist: 'Prisha K.',
         album: 'Afterglow',
-        src: 'assets/audio/afterglow.mp3',
+        src: 'assets/audio/test.mp3',
       },
       {
         title: 'Faded Haze',
         artist: 'Arjun M.',
         album: 'Faded Haze',
-        src: 'assets/audio/faded-haze.mp3',
+        src: 'assets/audio/test.mp3',
       },
       {
         title: 'Glass Sky',
         artist: 'Nova Lane',
         album: 'Glass Sky',
-        src: 'assets/audio/glass-sky.mp3',
+        src: 'assets/audio/test.mp3',
       },
       {
         title: 'Signal Bloom',
         artist: 'Rhea S.',
         album: 'Signal Bloom',
-        src: 'assets/audio/signal-bloom.mp3',
+        src: 'assets/audio/test.mp3',
       },
     ],
   };
