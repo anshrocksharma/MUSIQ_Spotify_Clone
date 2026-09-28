@@ -107,7 +107,12 @@
   function loadSong(song) {
     if (!song || !song.src) return;
 
-    let index = state.queue.findIndex((queuedSong) => queuedSong.src === song.src);
+    let index = state.queue.indexOf(song);
+    if (index === -1) {
+      index = state.queue.findIndex((queuedSong) =>
+        queuedSong.src === song.src && queuedSong.title === song.title && queuedSong.artist === song.artist
+      );
+    }
     if (index === -1) {
       state.queue.push(song);
       index = state.queue.length - 1;
