@@ -34,133 +34,27 @@
             <div class="chip">Radio</div>
           </div>
 
-          <div class="quick-grid">
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Night Pulse</strong>
-                <span>Lo-fi</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Cloud Haze</strong>
-                <span>Ambient</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Neon Run</strong>
-                <span>Electro</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Sunset Drift</strong>
-                <span>Psychedelic</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Velvet Echo</strong>
-                <span>Chill</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-            <article class="quick-card">
-              <div class="album-pattern"></div>
-              <div class="meta">
-                <strong>Midnight City</strong>
-                <span>Night Drive</span>
-              </div>
-              <div class="play-badge">â–¶</div>
-            </article>
-          </div>
+          <div class="quick-grid" id="quickPickGrid" aria-live="polite"></div>
 
           <div class="section-title">
             <h3>Jump back in</h3>
             <a href="#">See all</a>
           </div>
 
-          <div class="carousel">
-            <div class="album-card">
-              <div class="cover style-1"></div>
-              <div class="album-meta">
-                <strong>Afterglow</strong>
-                <span>Prisha K.</span>
-              </div>
-            </div>
-            <div class="album-card">
-              <div class="cover style-2"></div>
-              <div class="album-meta">
-                <strong>Faded Haze</strong>
-                <span>Arjun M.</span>
-              </div>
-            </div>
-            <div class="album-card">
-              <div class="cover style-3"></div>
-              <div class="album-meta">
-                <strong>Glass Sky</strong>
-                <span>Nova Lane</span>
-              </div>
-            </div>
-            <div class="album-card">
-              <div class="cover style-4"></div>
-              <div class="album-meta">
-                <strong>Signal Bloom</strong>
-                <span>Rhea S.</span>
-              </div>
-            </div>
-          </div>
+          <div class="carousel" id="jumpBackInCarousel" aria-live="polite"></div>
 
           <div class="section-title">
             <h3>Popular artists</h3>
             <a href="#">View</a>
           </div>
 
-          <div class="carousel artist-row">
-            <div class="artist-card">
-              <div class="artist-avatar" style="background: linear-gradient(135deg, #7ad3d5, #1e3255);"></div>
-              <strong>Vanta</strong>
-              <span>58k</span>
-            </div>
-            <div class="artist-card">
-              <div class="artist-avatar" style="background: linear-gradient(135deg, #d57ec3, #3a2346);"></div>
-              <strong>Azura</strong>
-              <span>92k</span>
-            </div>
-            <div class="artist-card">
-              <div class="artist-avatar" style="background: linear-gradient(135deg, #f3ad7d, #4d382d);"></div>
-              <strong>Kael</strong>
-              <span>71k</span>
-            </div>
-            <div class="artist-card">
-              <div class="artist-avatar" style="background: linear-gradient(135deg, #84d8a5, #1d4338);"></div>
-              <strong>Echo</strong>
-              <span>44k</span>
-            </div>
-          </div>
+          <div class="carousel artist-row" id="popularArtistsRow" aria-live="polite"></div>
 
           <div class="section-title">
             <h3>Moods & vibes</h3>
           </div>
 
-          <div class="genre-grid">
-            <div class="genre-card g1"><span>Lo-Fi</span></div>
-            <div class="genre-card g2"><span>Peppy</span></div>
-            <div class="genre-card g3"><span>Electronic</span></div>
-            <div class="genre-card g4"><span>Bollywood</span></div>
-            <div class="genre-card g5"><span>Chill</span></div>
-            <div class="genre-card g6"><span>Focus</span></div>
-          </div>
+          <div class="genre-grid" id="moodsAndVibesGrid" aria-live="polite"></div>
         </section>
 
         <section class="section" data-section="search">
@@ -360,6 +254,7 @@
       });
     </script>
     <script src="js/data.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/player.js"></script>
   </body>
 </html>
