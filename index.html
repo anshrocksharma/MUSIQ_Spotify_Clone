@@ -16,7 +16,7 @@
 
         <div class="header-actions">
           <div class="avatar" aria-label="Profile avatar"></div>
-          <button class="icon-btn" aria-label="Notifications">ðŸ””</button>
+          <button class="icon-btn" aria-label="Notifications">🔔</button>
         </div>
       </div>
 
@@ -64,25 +64,25 @@
           </div>
 
           <label class="search-box" aria-label="Search songs">
-            <span>âŒ•</span>
+            <span>⌕</span>
             <input type="text" value="midnight" aria-label="Search field" />
           </label>
 
           <div class="recent-searches">
-            <div class="tag">Midnight <span class="x">Ã—</span></div>
-            <div class="tag">Zoya <span class="x">Ã—</span></div>
-            <div class="tag">Neon <span class="x">Ã—</span></div>
+            <div class="tag">Midnight <span class="x">×</span></div>
+            <div class="tag">Zoya <span class="x">×</span></div>
+            <div class="tag">Neon <span class="x">×</span></div>
           </div>
 
           <div class="result-card">
-            <div class="pill">Lossless â€¢ 24-bit</div>
+            <div class="pill">Lossless • 24-bit</div>
             <div class="result-body">
               <div class="result-cover"></div>
               <div style="flex:1; min-width:0;">
                 <strong style="display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Midnight Signal</strong>
-                <span style="color: var(--muted); font-size: 0.75rem;">Lina Vale â€¢ Neon Reverie</span>
+                <span style="color: var(--muted); font-size: 0.75rem;">Lina Vale • Neon Reverie</span>
               </div>
-              <button class="play-button" aria-label="Play result">â–¶</button>
+              <button class="play-button" aria-label="Play result">▶</button>
             </div>
           </div>
 
@@ -119,46 +119,46 @@
             <div class="thumb"></div>
             <div class="meta">
               <strong>Liked Songs</strong>
-              <span>1,284 tracks â€¢ Curated</span>
+              <span>1,284 tracks • Curated</span>
             </div>
-            <div class="heart">â™¥</div>
+            <div class="heart">♥</div>
           </div>
 
           <div class="list-card">
             <div class="thumb" style="background: linear-gradient(135deg, #3d4d5b, #1a2025);"></div>
             <div class="meta">
               <strong>Late Night Coding</strong>
-              <span>36 songs â€¢ 2h 14m</span>
+              <span>36 songs • 2h 14m</span>
             </div>
-            <div class="heart">â™¡</div>
+            <div class="heart">♡</div>
           </div>
 
           <div class="list-card">
             <div class="thumb" style="background: linear-gradient(135deg, #3d2a3c, #201a2c);"></div>
             <div class="meta">
               <strong>Glass Cities</strong>
-              <span>22 songs â€¢ 1h 08m</span>
+              <span>22 songs • 1h 08m</span>
             </div>
-            <div class="heart">â™¡</div>
+            <div class="heart">♡</div>
           </div>
         </section>
       </main>
 
       <div class="bottom-nav" aria-label="Bottom navigation">
         <button class="nav-item active" data-target="home">
-          <span class="nav-icon">âŒ‚</span>
+          <span class="nav-icon">⌂</span>
           Home
         </button>
         <button class="nav-item" data-target="search">
-          <span class="nav-icon">âŒ•</span>
+          <span class="nav-icon">⌕</span>
           Search
         </button>
         <button class="nav-item" data-target="library">
-          <span class="nav-icon">â–£</span>
+          <span class="nav-icon">▤</span>
           Library
         </button>
         <button class="nav-item" data-target="settings">
-          <span class="nav-icon">âš™</span>
+          <span class="nav-icon">⚙</span>
           Settings
         </button>
       </div>
@@ -170,9 +170,9 @@
           <span>Lina Vale</span>
         </div>
         <div class="mini-controls">
-          <button class="mini-control" aria-label="Previous track">â®</button>
-          <button class="mini-control" aria-label="Play or pause">â–¶</button>
-          <button class="mini-control" aria-label="Next track">â­</button>
+          <button class="mini-control" aria-label="Previous track">⏮</button>
+          <button class="mini-control" aria-label="Play or pause">▶</button>
+          <button class="mini-control" aria-label="Next track">⏭</button>
         </div>
         <div class="mini-progress"><span></span></div>
       </div>
@@ -182,7 +182,7 @@
       <div class="modal-card">
         <div class="modal-header">
           <div class="pill">LOSSLESS</div>
-          <button class="close-btn" aria-label="Close player">âœ•</button>
+          <button class="close-btn" aria-label="Close player">×</button>
         </div>
 
         <audio id="audioPlayer" preload="metadata"></audio>
@@ -190,7 +190,7 @@
         <div class="album-visual"></div>
 
         <h2 class="modal-title">Midnight Signal</h2>
-        <div class="track-meta">Lina Vale â€¢ Neon Reverie</div>
+        <div class="track-meta">Lina Vale • Neon Reverie</div>
 
         <div class="slider"><span></span></div>
         <div class="time-row">
@@ -199,11 +199,11 @@
         </div>
 
         <div class="controls">
-          <button class="circle-btn">â®</button>
-          <button class="circle-btn">âª</button>
-          <button class="circle-btn primary">â–¶</button>
-          <button class="circle-btn">â©</button>
-          <button class="circle-btn">â†»</button>
+          <button class="circle-btn" aria-label="Previous track">⏮</button>
+          <button class="circle-btn" aria-label="Rewind 10 seconds">⏪</button>
+          <button class="circle-btn primary" aria-label="Play or pause">▶</button>
+          <button class="circle-btn" aria-label="Next track">⏩</button>
+          <button class="circle-btn" aria-label="Repeat">🔁</button>
         </div>
 
         <div class="drawer">
@@ -227,10 +227,12 @@
 
       navItems.forEach((button) => {
         button.addEventListener('click', () => {
+          const target = button.dataset.target;
+          if (!document.querySelector(`.section[data-section="${target}"]`)) return;
+
           navItems.forEach((item) => item.classList.remove('active'));
           button.classList.add('active');
 
-          const target = button.dataset.target;
           sections.forEach((section) => {
             section.classList.toggle('active', section.dataset.section === target);
           });
@@ -258,4 +260,3 @@
     <script src="js/player.js"></script>
   </body>
 </html>
-

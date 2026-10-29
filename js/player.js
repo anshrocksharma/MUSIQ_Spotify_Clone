@@ -1,4 +1,7 @@
 (() => {
+  const songs = window.MusiqData && Array.isArray(window.MusiqData.songs)
+    ? window.MusiqData.songs
+    : [];
   const audio = document.getElementById('audioPlayer') || document.createElement('audio');
   if (!audio.id) {
     audio.id = 'audioPlayer';
@@ -15,38 +18,7 @@
     currentTime: 0,
     duration: 0,
     volume: audio.volume,
-    queue: [
-      {
-        title: 'Midnight Signal',
-        artist: 'Lina Vale',
-        album: 'Neon Reverie',
-        src: 'assets/audio/test.mp3',
-      },
-      {
-        title: 'Afterglow',
-        artist: 'Prisha K.',
-        album: 'Afterglow',
-        src: 'assets/audio/test.mp3',
-      },
-      {
-        title: 'Faded Haze',
-        artist: 'Arjun M.',
-        album: 'Faded Haze',
-        src: 'assets/audio/test.mp3',
-      },
-      {
-        title: 'Glass Sky',
-        artist: 'Nova Lane',
-        album: 'Glass Sky',
-        src: 'assets/audio/test.mp3',
-      },
-      {
-        title: 'Signal Bloom',
-        artist: 'Rhea S.',
-        album: 'Signal Bloom',
-        src: 'assets/audio/test.mp3',
-      },
-    ],
+    queue: songs.slice(),
   };
 
   const miniPlayer = document.getElementById('miniPlayer');
@@ -107,18 +79,17 @@
   function loadSong(song) {
     if (!song || !song.src) return;
 
-    let index = state.queue.indexOf(song);
-    if (index === -1) {
-      index = state.queue.findIndex((queuedSong) =>
-        queuedSong.src === song.src && queuedSong.title === song.title && queuedSong.artist === song.artist
-      );
-    }
+    let index = state.queue.findIndex((queuedSong) =>
+      queuedSong === song ||
+      (song.id && queuedSong.id === song.id) ||
+      (queuedSong.src === song.src && queuedSong.title === song.title && queuedSong.artist === song.artist)
+    );
     if (index === -1) {
       state.queue.push(song);
       index = state.queue.length - 1;
     }
 
-    state.currentSong = song;
+    state.currentSong = state.queue[index];
     state.currentSongIndex = index;
     state.currentTime = 0;
     state.duration = 0;
